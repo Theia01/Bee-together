@@ -2,7 +2,7 @@ const assert = require('assert')
 const ForgotPassword = require('../app/ForgotPassword')
 
 const data = ['lucas.maillard@imie.fr','camille.naulet@hotmail.fr','johdel390@gmail.com', 'jeanmichdu92@outcook.de']
-let ForgotPassword = null;
+let forgotPassword = null;
 describe("forgotPassword", () => {
 
     describe("#verifMail", () => {
