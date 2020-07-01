@@ -1,7 +1,9 @@
 const assert = require('assert')
 const Register = require('../app/Register')
 
-const data = ['pastèque','pastèque@malotrue','pas steak@malotru.com','pasteque@.com', '@steak.com']
+const dataMail = ['','pastèque','pastèque@malotrue','pas steak@malotru.com','pasteque@.com', '@steak.com']
+const dataPassword = ['','bob','password','password4!','PassworD33','Password?','PASSWORD4?',
+'C00KIE : Anciennement petit gâteau sucré, qu’on acceptait avec plaisir. Aujourd’hui : petit fichier informatique drôlement salé, qu’il faut refuser avec véhémence.']
 let register = null;
 describe("Register", () => {
 
@@ -10,7 +12,7 @@ describe("Register", () => {
             register = new Register
         })
 
-        data.forEach(element => {
+        dataMail.forEach(element => {
             it("Doit retourner false", () => {
                 // Arrange
                 let result = null
@@ -48,7 +50,25 @@ describe("Register", () => {
             // Assert
             assert.strictEqual(result,true)
         })
-
-
     })
+
+    describe("#setPassword", () => {
+        beforeEach(() => {
+            register = new Register
+        })
+
+        dataPassword.forEach(element => {
+            it("Doit retourner false", () => {
+                // Arrange
+                let result = null
+    
+                // Act
+                result = register.setPassword(element)
+    
+                // Assert
+                assert.strictEqual(result,false)
+            })
+        })
+    })
+    
 })
