@@ -7,4 +7,9 @@ module.exports = class Register {
     setMail(email) {
         return null
     }
+
+    setPassword(password) {
+        return null
+    }
+
 }
