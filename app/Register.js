@@ -4,7 +4,7 @@ module.exports = class Register {
 
     }
 
-    setMail() {
+    setMail(email) {
         return null
     }
 }
