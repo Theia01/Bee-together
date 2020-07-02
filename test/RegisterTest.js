@@ -69,6 +69,18 @@ describe("Register", () => {
                 assert.strictEqual(result,false)
             })
         })
+
+        it("Doit retourner true", () => {
+            // Arrange
+            const v_password = "H1bern@TIon"
+            let result = null
+
+            // Act
+            result = register.setPassword(v_password)
+
+            // Assert
+            assert.strictEqual(result,true)
+        })
     })
     
 })
