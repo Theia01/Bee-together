@@ -1,18 +1,15 @@
 module.exports = class Login {
-    constructor() {}
+    constructor(data) {
+        this.data = data
+    }
 
     login(mail, mdp) {
-        const users = [
-            {"mail": "test@tester.fr", "password": "1234aBc."},
-            {"mail": "test@test.com", "password": "1234aBc."}
-        ]
-
         if (mail.length > 0 && mdp.length > 0) {
-            if (users.some(i => i.mail.includes(mail))) {
-                let pos = users.map(function(e) {
+            if (this.data.some(i => i.mail.includes(mail))) {
+                let pos = this.data.map(function(e) {
                         return e.mail
                     }).indexOf(mail);
-                return users[pos].password === mdp
+                return this.data[pos].password === mdp
 
             } else {return false}
         } else {return false}
