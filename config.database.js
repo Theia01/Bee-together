@@ -65,9 +65,3 @@ module.exports = class DatabaseConfig {
         connection.end()
     }
 }
-
-module.exports.initDB = function () {
-    var dbConfig = new DatabaseConfig
-    dbConfig.initDatabase()
-}
-
