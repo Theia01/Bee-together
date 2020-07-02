@@ -7,8 +7,6 @@ module.exports = class Login {
             {"mail": "test@test.com", "password": "1234aBc."}
         ]
 
-        console.log(mail)
-
         if (mail.length > 0 && mdp.length > 0) {
             if (users.some(i => i.mail.includes(mail))) {
                 let pos = users.map(function(e) {
