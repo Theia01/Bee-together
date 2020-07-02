@@ -26,7 +26,7 @@ describe("forgotPassword", () => {
         it("true : l'email existe", () => {
             // Arrange
             const mail = "lucas.maillard@imie.fr"
-            forgotPassword.Mails = ["lucas.maillard@imie.fr","camille.naulet@hotmail.fr","johdel390@gmail.com"]
+            forgotPassword.mails = ["lucas.maillard@imie.fr","camille.naulet@hotmail.fr","johdel390@gmail.com"]
             let result = null
 
             // Act
@@ -36,7 +36,7 @@ describe("forgotPassword", () => {
             assert.strictEqual(result,true)
         })
 
-        it("false : Le compte (l'email) n'esxiste pas", () => {
+        it("false : Le compte (l'email) n'existe pas", () => {
             // Arrange
             const mail = "jeanmichdu92@outcook.de"
             forgotPassword.mails = ["lucas.maillard@imie.fr","camille.naulet@hotmail.fr","johdel390@gmail.com"]
