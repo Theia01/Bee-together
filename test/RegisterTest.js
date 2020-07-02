@@ -84,7 +84,7 @@ describe("Register", () => {
         })
     })
 
-    describe("#setUsename", () => {
+    describe("#setUsername", () => {
         beforeEach(() => {
             register = new Register
         })
