@@ -18,7 +18,7 @@ describe("UpdateProfil", ()=>{
 
         it("Doit retourner false, pseudo déjà utilisé", () => {
             // Arrange
-            const login = "Fleur"
+            const login = "Lou"
             updateProfil.usedLogin = dataPseudo
             let result = null
 
@@ -46,8 +46,11 @@ describe("UpdateProfil", ()=>{
         })
 
         it("Doit rendre true si le pseudo a bien été modifié", ()=>{
+            //Arrange
+            const login = "Michel"
+            updateProfil.usedLogin = dataPseudo
             // Act
-            const res = updateProfil.updatePseudo()
+            const res = updateProfil.updatePseudo(login)
 
             // Assertion
             assert.equal(res, true)
@@ -77,13 +80,13 @@ describe("UpdateProfil", ()=>{
             let result = null
 
             // Act
-            result = updateProfil.setMail(mail)
+            result = updateProfil.updateMail(mail)
 
             // Assert
             assert.strictEqual(result,false)
         })
 
-        it("Doit relever une erreur si le mail n'est pas definie", ()=>{
+        it("Doit relever une erreur si le mail n'est pas defini", ()=>{
             // Arrange
             let res = false
 
@@ -98,9 +101,10 @@ describe("UpdateProfil", ()=>{
             assert.equal(res, true)
         })
 
-        it("Doit rendre true si le mail a bien été modifier", ()=>{
+        it("Doit rendre true si le mail a bien été modifié", ()=>{
             //Arrange
-            let mail = dataMail[0]
+            updateProfil.usedMails = ["noidea@laposte.net","johdel390@gmail.com","pasteque@hotmail.fr"]
+            let mail = "michel44@gmail.com"
             
             // Act
             const res = updateProfil.updateMail(mail)
