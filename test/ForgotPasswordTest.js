@@ -10,19 +10,6 @@ describe("forgotPassword", () => {
             forgotPassword = new ForgotPassword
         })
 
-        data.forEach(element => {
-            it("NULL", () => {
-                // Arrange
-                let result = null
-    
-                // Act
-                result = forgotPassword.verifMail(element)
-    
-                // Assert
-                assert.strictEqual(result,false)
-            })
-        });
-
         it("true : l'email existe", () => {
             // Arrange
             const mail = "lucas.maillard@imie.fr"
