@@ -26,11 +26,12 @@ describe("UpdateProfil", ()=>{
 
         it("Doit relever une erreur si le pseudo n'est pas definie", ()=>{
             // Arrange
+            const pseudo = 'michel'
             let res = false
 
             // Act
             try {
-                updateProfil.updatePseudo()
+                updateProfil.updatePseudo(pseudo)
             } catch (error) {
                 res = true
             }
@@ -39,7 +40,7 @@ describe("UpdateProfil", ()=>{
             assert.equal(res, true)
         })
 
-        it("Doit rendre true si le pseudo a bien été modifier", ()=>{
+        it("Doit rendre true si le pseudo a bien été modifié", ()=>{
             // Act
             const res = updateProfil.updatePseudo()
 
