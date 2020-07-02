@@ -9,12 +9,12 @@ module.exports = class Login {
 
         console.log(mail)
 
-        if (mail.length > 0 && mdp.length > 0) { // test 1 & 2
-            if (users.some(i => i.mail.includes(mail))) { // test 3
+        if (mail.length > 0 && mdp.length > 0) {
+            if (users.some(i => i.mail.includes(mail))) {
                 let pos = users.map(function(e) {
                         return e.mail
                     }).indexOf(mail);
-                return users[pos].password === mdp;
+                return users[pos].password === mdp
 
             } else {return false}
         } else {return false}
