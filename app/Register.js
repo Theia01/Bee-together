@@ -1,7 +1,7 @@
 module.exports = class Register {
 
-    constructor() {
-
+    constructor(usedLogin) {
+        this.usedLogin = usedLogin
     }
 
     setMail(email) {
@@ -23,7 +23,14 @@ module.exports = class Register {
     }
 
     setUsername(login){
-        return null
+        if (this.usedLogin && !this.usedLogin.includes(login)) {
+            if (30 >= login.length && login.length >= 4 && !login.includes(" ")) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
-
 }
