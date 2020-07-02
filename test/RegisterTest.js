@@ -1,9 +1,10 @@
 const assert = require('assert')
 const Register = require('../app/Register')
 
-const dataMail = ['','pastèque','pastèque@malotrue','pas steak@malotru.com','pasteque@.com', '@steak.com']
+const dataMail = ['','pastèque','pastèque@malotrue','pas steak@malotru.com','pasteque@.com', '@steak.com','@.com']
 const dataPassword = ['','bob','password','password4!','PassworD33','Password?','PASSWORD4?',
 'C00KIE : Anciennement petit gâteau sucré, qu’on acceptait avec plaisir. Aujourd’hui : petit fichier informatique drôlement salé, qu’il faut refuser avec véhémence.']
+const dataLogin = ['','a','az','aze','azertyuiopqsdfghjklmwxcvbnazert','azertyuiopqsdfghjklmwxcvbnazerty','no SPACE']
 let register = null;
 describe("Register", () => {
 
@@ -82,5 +83,52 @@ describe("Register", () => {
             assert.strictEqual(result,true)
         })
     })
+
+    describe("#setLogin", () => {
+        beforeEach(() => {
+            register = new Register
+        })
+
+        dataLogin.forEach(element => {
+            it("Doit retourner false", () => {
+                // Arrange
+                let result = null
+    
+                // Act
+                result = register.setLogin(element)
+    
+                // Assert
+                assert.strictEqual(result,false)
+            })
+        })
+
+        it("Doit retourner true", () => {
+            // Arrange
+            const v_login = "nobodycantakemyusername"
+            register.usedLogin = ["snifnoidea","hiimnobody","onestdestubesonestpasdespots"]
+            let result = null
+
+            // Act
+            result = register.setLogin(v_login)
+
+            // Assert
+            assert.strictEqual(result,true)
+        })
+
+        it("Doit retourner false, pseudo déjà utilisé", () => {
+            // Arrange
+            const v_login = "snifnoidea"
+            register.usedLogin = ["snifnoidea","hiimnobody","onestdestubesonestpasdespots"]
+            let result = null
+
+            // Act
+            result = register.setLogin(v_login)
+
+            // Assert
+            assert.strictEqual(result,false)
+        })
+
+    })
+
     
 })

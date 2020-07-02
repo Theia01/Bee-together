@@ -22,4 +22,8 @@ module.exports = class Register {
         return false
     }
 
+    setLogin(login){
+        return null
+    }
+
 }
