@@ -13,7 +13,6 @@ module.exports = class UpdateProfil {
     }
 
     updateMail(mail){
-        _verifyIfIsMail();
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if(re.test(String(email).toLowerCase())){
             if(this.usedMails.indexOf(email) < 0){
@@ -24,12 +23,11 @@ module.exports = class UpdateProfil {
     }
 
 
-    updatePassword(password){
-        if(pseudo !== undefined){
-            return true; //prêt à changer
+    updatePassword(password) {
+        const re = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,30})$/
+        if(re.test(password)){
+                return true;
         }
-
-         return false // La case mot de passe n'est pas remplie
-     }
+        return false
 
 }
