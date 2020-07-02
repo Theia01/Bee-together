@@ -23,11 +23,12 @@ module.exports = class UpdateProfil {
     }
 
 
-    updatePassword(password){
-        if(pseudo !== undefined){
-            return true; //prêt à changer
+    updatePassword(password) {
+        const re = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,30})$/
+        if(re.test(password)){
+                return true;
         }
+        return false
+    }
 
-         return false // La case mot de passe n'est pas remplie
-     }
 }
