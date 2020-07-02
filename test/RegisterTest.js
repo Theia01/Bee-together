@@ -84,7 +84,7 @@ describe("Register", () => {
         })
     })
 
-    describe("#setLogin", () => {
+    describe("#setUsename", () => {
         beforeEach(() => {
             register = new Register
         })
@@ -95,7 +95,7 @@ describe("Register", () => {
                 let result = null
     
                 // Act
-                result = register.setLogin(element)
+                result = register.setUsername(element)
     
                 // Assert
                 assert.strictEqual(result,false)
@@ -109,7 +109,7 @@ describe("Register", () => {
             let result = null
 
             // Act
-            result = register.setLogin(v_login)
+            result = register.setUsername(v_login)
 
             // Assert
             assert.strictEqual(result,true)
@@ -122,7 +122,7 @@ describe("Register", () => {
             let result = null
 
             // Act
-            result = register.setLogin(v_login)
+            result = register.setUsername(v_login)
 
             // Assert
             assert.strictEqual(result,false)

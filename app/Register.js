@@ -22,7 +22,7 @@ module.exports = class Register {
         return false
     }
 
-    setLogin(login){
+    setUsername(login){
         return null
     }
 
