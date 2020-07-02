@@ -32,7 +32,10 @@ describe("Login", () => {
         it("Doit retourner false si le mail est mauvais", () => {
             // Arrange
             const login = new Login()
-            login.data = ['test@test.com', '1234aBc.']
+            login.data = [
+                {"mail": "test@tester.fr", "password": "1234aBc."},
+                {"mail": "test@test.com", "password": "1234aBc."}
+            ]
             const mail = 'test@test.fr'
             const mdp = '1234aBc.'
             let result = null
@@ -46,7 +49,10 @@ describe("Login", () => {
         it("Doit retourner false si le mot de passe est mauvais", () => {
             // Arrange
             const login = new Login()
-            login.data = ['test@test.com', '1234aBc.']
+            login.data = [
+                {"mail": "test@tester.fr", "password": "1234aBc."},
+                {"mail": "test@test.com", "password": "1234aBc."}
+            ]
             const mail = 'test@test.com'
             const mdp = '1234aBe.'
             let result = null
@@ -60,7 +66,10 @@ describe("Login", () => {
         it("Doit retourner true si le mail et le mot de passe sont bons", () => {
             // Arrange
             const login = new Login()
-            login.data = ['test@test.com', '1234aBc.']
+            login.data = [
+                {"mail": "test@tester.fr", "password": "1234aBc."},
+                {"mail": "test@test.com", "password": "1234aBc."}
+            ]
             const mail = 'test@test.com'
             const mdp = '1234aBc.'
             let result = null
