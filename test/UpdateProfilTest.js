@@ -2,20 +2,12 @@ const assert = require('assert')
 const UpdateProfil = require("../app/UpdateProfil")
 
 let updateProfil = null
-const list = [
-    {pseudo : "John Doe",
-    mail : "john.doe@gmail.com",
-    password : "Azerty123!"},
 
-    {pseudo : "Mireille Doe",
-    mail : "mireille.doe@gmail.com",
-    password : "#N3rv3rDr3am"},
+const dataPseudo = ["John Doe", "Lou", "Romuald"]
+const dataMail = ['','pastèque','pastèque@malotrue','pas steak@malotru.com','pasteque@.com', '@steak.com','@.com']
+const dataPassword = ['','bob','password','password4!','PassworD33','Password?','PASSWORD4?',
+'C00KIE : Anciennement petit gâteau sucré, qu’on acceptait avec plaisir. Aujourd’hui : petit fichier informatique drôlement salé, qu’il faut refuser avec véhémence.']
 
-    {pseudo : "Jasmine Doe",
-    mail : "jasmine67",
-    password : "motdepasse"},
-]
-//mpd => mini : 8caractère, max : 30, min 
 describe("UpdateProfil", ()=>{
     beforeEach(()=>{
         // Arange
@@ -24,9 +16,22 @@ describe("UpdateProfil", ()=>{
 
     describe("#updatePseudo", ()=>{
 
+        it("Doit retourner false, pseudo déjà utilisé", () => {
+            // Arrange
+            const login = "Fleur"
+            updateProfil.usedLogin = dataPseudo
+            let result = null
+
+            // Act
+            result = updateProfil.updatePseudo(login)
+
+            // Assert
+            assert.strictEqual(result,false)
+        })
+
         it("Doit relever une erreur si le pseudo n'est pas definie", ()=>{
             // Arrange
-            const pseudo = 'michel'
+            const pseudo = dataPseudo[0]
             let res = false
 
             // Act
@@ -52,6 +57,32 @@ describe("UpdateProfil", ()=>{
 
     describe("#updateMail", ()=>{
 
+        dataMail.forEach(element => {
+            it("Doit retourner false", () => {
+                // Arrange
+                let result = null
+    
+                // Act
+                result = updateProfil.updateMail(element)
+    
+                // Assert
+                assert.strictEqual(result,false)
+            })
+        });
+
+        it("Doit retourner false (mail déjà utilisé)", () => {
+            // Arrange
+            const mail = "johdel390@gmail.com"
+            updateProfil.usedMails = ["noidea@laposte.net","johdel390@gmail.com","pasteque@hotmail.fr"]
+            let result = null
+
+            // Act
+            result = updateProfil.setMail(mail)
+
+            // Assert
+            assert.strictEqual(result,false)
+        })
+
         it("Doit relever une erreur si le mail n'est pas definie", ()=>{
             // Arrange
             let res = false
@@ -67,57 +98,12 @@ describe("UpdateProfil", ()=>{
             assert.equal(res, true)
         })
 
-        it("Doit vérifier que la méthode _verifyIfIsMail est appelée", ()=>{
-            //Arrange
-            let res = false
-
-            //Act
-            updateProfil._verifyIfIsMail = function(){
-                res = true
-            }
-            updateProfil.updateMail(list[0].mail);
-
-            //Assert
-            assert.equal(res, true)
-        })
-
-        it("Doit vérifier que le mail est passé dans la méthode _verifyIfIsMail", ()=>{
-            //Arrange
-            const mail = list[0].mail
-            let res = false
-
-            //Act
-            updateProfil._verifyIfIsMail = function(value){
-                res = true
-
-                // Assert
-                assert.equal(value, mail)
-            }
-            updateProfil.updateMail(mail);
-
-            //Assert
-            assert.equal(res, true)
-        })
-       
-        it("Doit retouner une Erreur si le mail passé dans la méthode _verifyIfIsMail n'est pas un réel mail", ()=>{
-            //Arrange
-            const mail = list[2].mail
-            let res = false
-
-            // Act
-            try {
-                updateProfil.updateMail(mail)
-            } catch (error) {
-                res = true
-            }
-
-            //Assert
-            assert.equal(res, true)
-        })
-
         it("Doit rendre true si le mail a bien été modifier", ()=>{
+            //Arrange
+            let mail = dataMail[0]
+            
             // Act
-            const res = updateProfil.updateMail()
+            const res = updateProfil.updateMail(mail)
 
             // Assertion
             assert.equal(res, true)
@@ -126,6 +112,19 @@ describe("UpdateProfil", ()=>{
     })
 
     describe("#updatePassword", ()=>{
+        
+        dataPassword.forEach(element => {
+            it("Doit retourner false", () => {
+                // Arrange
+                let result = null
+
+                // Act
+                result = updateProfil.updatePassword(element)
+    
+                // Assert
+                assert.strictEqual(result,false)
+            })
+        })
 
         it("Doit relever une erreur si le password n'est pas definie", ()=>{
             // Arrange
@@ -143,8 +142,11 @@ describe("UpdateProfil", ()=>{
         })
 
         it("Doit rendre true si le password a bien été modifier", ()=>{
+            // Arrange
+            const password = "H1bern@TIon"
+            
             // Act
-            const res = updateProfil.updatePassword()
+            const res = updateProfil.updatePassword(password)
 
             // Assertion
             assert.equal(res, true)
