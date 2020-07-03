@@ -13,7 +13,7 @@ module.exports = class DBService {
             const db = this._database.initConnection()
                 db.connect()
                 db.query(
-                    `DELETE FROM ${this._database.table.auth.table_name} WHERE id=?`, [id], function (error, results, fields) {
+                    `DELETE FROM ${this._database.table.auth.table_name} WHERE ${this._database.table.auth.columns.id.name}=?`, [id], function (error, results, fields) {
                     if(results.affectedRows>0){
                         resolve(true)
                     } else {
