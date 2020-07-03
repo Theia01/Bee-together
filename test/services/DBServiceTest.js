@@ -71,10 +71,11 @@ describe("DBService", () => {
                 mail: 'test@test.com'}
 
             // Act
-            result = dbService.update(id, data)
+            dbService.update(id, data).then(res => {
 
-            //Assert
-            assert.strictEqual(result, true)
+                //Assert
+                assert.strictEqual(res, true)
+            })
         })
         it("Doit retourner false : id incorrect", () => {
             // Arrange
@@ -86,10 +87,11 @@ describe("DBService", () => {
                 mail: 'test@test.fr'}
 
             // Act
-            result = dbService.update(id, data)
+            dbService.update(id, data).then(res => {
 
-            //Assert
-            assert.strictEqual(result, false)
+                //Assert
+                assert.strictEqual(res, false)
+            })
         })
         it("Doit retourner false : login incorrect", () => {
             // Arrange
@@ -101,10 +103,11 @@ describe("DBService", () => {
                 mail: 'test@test.fr'}
 
             // Act
-            result = dbService.update(id, data)
+            dbService.update(id, data).then(res => {
 
-            //Assert
-            assert.strictEqual(result, false)
+                //Assert
+                assert.strictEqual(res, false)
+            })
         })
         it("Doit retourner false : mail incorrect", () => {
             // Arrange
@@ -116,25 +119,26 @@ describe("DBService", () => {
                 mail: 'banane'}
 
             // Act
-            result = dbService.update(id, data)
+            dbService.update(id, data).then(res => {
 
-            //Assert
-            assert.strictEqual(result, false)
+                //Assert
+                assert.strictEqual(res, false)
+            })
         })
         it("Doit retourner false : password incorrect", () => {
             // Arrange
             const dbService = new DBService()
-            let result = null
             const id = 1
             const data = {login: 'test',
                 password: 'aaa',
                 mail: 'test@test.fr'}
 
             // Act
-            result = dbService.update(id, data)
+            dbService.update(id, data).then(res => {
 
-            //Assert
-            assert.strictEqual(result, false)
+                //Assert
+                assert.strictEqual(res, false)
+            })
         })
     })
     describe("#delete", () => {
