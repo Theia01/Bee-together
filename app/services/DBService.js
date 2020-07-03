@@ -15,7 +15,7 @@ module.exports = class DBService {
                 db.query(
                     `DELETE FROM ${this._database.table.auth.table_name} WHERE ${this._database.table.auth.columns.id.name}=?`, [id], function (error, results, fields) {
                     db.end()
-                    if(results.affectedRows>0){
+                    if(results && results.affectedRows>0){
                         resolve(true)
                     } else {
                         resolve(false)
