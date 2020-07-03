@@ -9,7 +9,18 @@ module.exports = class DBService {
     }
 
     delete(id) {
-        return null
+        return new Promise((resolve,reject) => {
+            const db = this._database.initConnection()
+                db.connect()
+                db.query(
+                    `DELETE FROM ${this._database.table.auth.table_name} WHERE id=?`, [id], function (error, results, fields) {
+                    if(results.affectedRows>0){
+                        resolve(true)
+                    } else {
+                        resolve(false)
+                    }
+            });
+        })
     }
 
     select() {
