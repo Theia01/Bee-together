@@ -45,4 +45,81 @@ describe("DBService", () => {
             assert.strictEqual(result, true)
         })
     })
+    describe("#update", () => {
+        it("Doit retourner true", () => {
+            // Arrange
+            const dbService = new DBService()
+            let result = null
+            const id = 1
+            const data = {login: 'test',
+                password: 'freiufgeuri.4641A',
+                mail: 'test@test.fr'}
+
+            // Act
+            result = dbService.update(user)
+
+            //Assert
+            assert.strictEqual(result, true)
+        })
+        it("Doit retourner false : id incorrecte", () => {
+            // Arrange
+            const dbService = new DBService()
+            let result = null
+            const id = 2
+            const data = {login: 'test',
+                password: 'freiufgeuri.4641A',
+                mail: 'test@test.fr'}
+
+            // Act
+            result = dbService.update(id, data)
+
+            //Assert
+            assert.strictEqual(result, false)
+        })
+        it("Doit retourner false : login incorrect", () => {
+            // Arrange
+            const dbService = new DBService()
+            let result = null
+            const id = 1
+            const data = {login: 'aa',
+                password: 'freiufgeuri.4641A',
+                mail: 'test@test.fr'}
+
+            // Act
+            result = dbService.update(id, data)
+
+            //Assert
+            assert.strictEqual(result, false)
+        })
+        it("Doit retourner false : mail incorrect", () => {
+            // Arrange
+            const dbService = new DBService()
+            let result = null
+            const id = 1
+            const data = {login: 'test',
+                password: 'freiufgeuri.4641A',
+                mail: 'banane'}
+
+            // Act
+            result = dbService.update(id, data)
+
+            //Assert
+            assert.strictEqual(result, false)
+        })
+        it("Doit retourner false : password incorrect", () => {
+            // Arrange
+            const dbService = new DBService()
+            let result = null
+            const id = 1
+            const data = {login: 'test',
+                password: 'aaa',
+                mail: 'test@test.fr'}
+
+            // Act
+            result = dbService.update(id, data)
+
+            //Assert
+            assert.strictEqual(result, false)
+        })
+    })
 })
