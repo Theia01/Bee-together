@@ -74,14 +74,14 @@ module.exports = class DBService {
             db.connect()
             db.query(
                 `UPDATE ${this._database.table.auth.table_name} SET 
-                ${this._database.table.auth.columns.login.name} = ${data['login']}, 
-                ${this._database.table.auth.columns.mail.name} = ${data['mail']}, 
-                ${this._database.table.auth.columns.password.name} = ${data['password']} WHERE ${this._database.table.auth.columns.id.name}=?`, [id], function (error, results, fields) {
+                ${this._database.table.auth.columns.login.name} = '${data['login']}', 
+                ${this._database.table.auth.columns.mail.name} = '${data['mail']}', 
+                ${this._database.table.auth.columns.password.name} = '${data['password']}' WHERE ${this._database.table.auth.columns.id.name}=?`, [id], function (error, results, fields) {
                     db.end()
-                    if(error){
-                        resolve(false)
+                    if(results && results.affectedRows>0){
+                        resolve(true)
                     } else {
-                        resolve(true);
+                        resolve(false)
                     }
                 });
         })

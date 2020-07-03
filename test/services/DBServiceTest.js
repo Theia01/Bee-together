@@ -71,7 +71,7 @@ describe("DBService", () => {
     describe("#update", () => {
         it("Doit retourner true", () => {
             // Arrange
-            const id = 1
+            const id = 3
             const data = {login: 'updatedTest',
                 password: 'freiufgeuri.4641B',
                 mail: 'test@test.com'}
@@ -85,7 +85,7 @@ describe("DBService", () => {
         })
         it("Doit retourner false : id incorrect", () => {
             // Arrange
-            const id = 2
+            const id = 42
             const data = {login: 'test',
                 password: 'freiufgeuri.4641A',
                 mail: 'test@test.fr'}
@@ -99,7 +99,7 @@ describe("DBService", () => {
         })
         it("Doit retourner false : login incorrect", () => {
             // Arrange
-            const id = 1
+            const id = 3
             const data = {login: 'aa',
                 password: 'freiufgeuri.4641A',
                 mail: 'test@test.fr'}
@@ -136,7 +136,7 @@ describe("DBService", () => {
             dbService.update(id, data).then(res => {
 
                 //Assert
-                assert.strictEqual(res, false)
+                assert.equal(res, false)
             })
         })
     })
