@@ -50,14 +50,18 @@ describe("DBService", () => {
         it("Doit retourner un dict de valeurs", () => {
             // Arrange
             const dbService = new DBService()
-            let result = null
             const id = 1
 
             // Act
-            result = dbService.select(id)
+            dbService.select(id).then(res => {
 
-            //Assert
-            assert.equal(result, {login: 'test', password: 'freiufgeuri.4641A', mail: 'test@test.fr'})
+                //Assert
+                assert.equal(res, {
+                    login: 'test',
+                    password: 'freiufgeuri.4641A',
+                    mail: 'test@test.fr'
+                })
+            })
         })
     })
     describe("#update", () => {
