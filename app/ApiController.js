@@ -1,8 +1,12 @@
 module.exports = class ApiController {
+    constructor(db) {
+
+    }
+    
     /**
      * URL /api/collection
      */
-    all() { }
+    all(req, res) { }
     /**
      * URL /api/collection/?store=DATA
      */
