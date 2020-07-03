@@ -32,4 +32,17 @@ describe("DBService", () => {
             assert.strictEqual(result, false)
         })
     })
+    describe("#select", () => {
+        it("Doit retourner true", () => {
+            // Arrange
+            const dbService = new DBService()
+            let result = null
+
+            // Act
+            result = dbService.select()
+
+            //Assert
+            assert.strictEqual(result, true)
+        })
+    })
 })

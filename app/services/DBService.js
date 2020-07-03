@@ -7,6 +7,10 @@ module.exports = class DBService {
 
     }
 
+    select() {
+        return null
+    }
+
     insert() {
         this._database.initConnection()
         return null
