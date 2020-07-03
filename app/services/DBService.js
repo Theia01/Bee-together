@@ -68,22 +68,37 @@ module.exports = class DBService {
 
     }
 
-    update(id, data) {
-        return new Promise((resolve,reject) => {
-            const db = this._database.initConnection()
-            db.connect()
-            db.query(
-                `UPDATE ${this._database.table.auth.table_name} SET 
-                ${this._database.table.auth.columns.login.name} = '${data['login']}', 
-                ${this._database.table.auth.columns.mail.name} = '${data['mail']}', 
-                ${this._database.table.auth.columns.password.name} = '${data['password']}' WHERE ${this._database.table.auth.columns.id.name}=?`, [id], function (error, results, fields) {
-                    db.end()
-                    if(results && results.affectedRows>0){
-                        resolve(true)
-                    } else {
-                        resolve(false)
-                    }
-                });
-        })
-    }
+    // update(id, data) {
+    //     return new Promise((resolve,reject) => {
+    //         if (30 < `${data['login']}`.length || `${data['login']}`.length < 4) {
+    //             resolve(false)
+    //             return
+    //         }
+    //         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //         if(!re.test(String(`${data['mail']}`).toLowerCase())){
+    //             resolve(false)
+    //             return
+    //         }
+    //         const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,30})$/
+    //         if(!regex.test(`${data['password']}`)){
+    //             resolve(false)
+    //             return
+    //         }
+    //         const db = this._database.initConnection()
+    //         db.connect()
+    //         db.query(
+    //             `UPDATE ${this._database.table.auth.table_name} SET
+    //             ${this._database.table.auth.columns.login.name} = '${data['login']}',
+    //             ${this._database.table.auth.columns.mail.name} = '${data['mail']}',
+    //             ${this._database.table.auth.columns.password.name} = '${data['password']}' WHERE ${this._database.table.auth.columns.id.name}=?`, [id], function (error, results, fields) {
+    //                 db.end()
+    //                 console.log(results)
+    //                 if(results.affectedRows>0){
+    //                     resolve(true)
+    //                 } else {
+    //                     resolve(false)
+    //                 }
+    //             });
+    //     })
+    // }
 }
