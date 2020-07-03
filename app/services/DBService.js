@@ -11,6 +11,10 @@ module.exports = class DBService {
         return null
     }
 
+    update(id, data) {
+        return null
+    }
+
     insert() {
         this._database.initConnection()
         return null
