@@ -7,6 +7,7 @@ Ce projet a été réalisé dans le cadre de notre deuxième année de formation
 
 ---
 
+
 ## Contributeurs
 
 Les **membres constituant le groupe** sont les suivants :
@@ -16,6 +17,7 @@ Les **membres constituant le groupe** sont les suivants :
 - Camille Naulet ([camillenaulet03](https://github.com/camillenaulet03))
 - Johan Deleon ([Amestyale](https://github.com/Amestyale))
 - Maël Debon ([maeldebon](https://github.com/maeldebon))
+
 
 ---
 
@@ -35,16 +37,18 @@ Il vous faut ensuite **cloner le projet :**
 git clone git@github.com:Theia01/Bee-together.git
 ```
 
-Une fois cela fait, rentrez dans le fichier créé et exécutez les commandes suivantes :
+Une fois cela fait, rentrez dans le fichier créé et exécutez la commande suivante :
 ```sh
 npm i
 ```
+
 ### Exécuter les tests 
 
 Lorsque les installations sont terminées, vous pouvez lancer les tests avec cette commande :
 ```sh
 npm test
 ```
+
 ### Démarrer le serveur
 
 Vous pouvez également lancer le serveur avec la commande : 
