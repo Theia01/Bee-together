@@ -66,17 +66,17 @@ describe("DBService", () => {
             const dbService = new DBService()
             let result = null
             const id = 1
-            const data = {login: 'test',
-                password: 'freiufgeuri.4641A',
-                mail: 'test@test.fr'}
+            const data = {login: 'updatedTest',
+                password: 'freiufgeuri.4641B',
+                mail: 'test@test.com'}
 
             // Act
-            result = dbService.update(user)
+            result = dbService.update(id, data)
 
             //Assert
             assert.strictEqual(result, true)
         })
-        it("Doit retourner false : id incorrecte", () => {
+        it("Doit retourner false : id incorrect", () => {
             // Arrange
             const dbService = new DBService()
             let result = null
