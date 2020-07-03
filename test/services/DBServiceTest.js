@@ -17,7 +17,8 @@ describe("DBService", () => {
             //Assert
             assert.strictEqual(result, true)
         })
-        it("Doit retourner false si le user ne s'est pas enregistré correctement", () => {// Arrange
+        it("Doit retourner false si le user ne s'est pas enregistré correctement", () => {
+            // Arrange
             const dbService = new DBService()
             let result = null
             const data = {login: 'test',
