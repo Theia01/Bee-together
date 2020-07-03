@@ -4,8 +4,10 @@ const app = express()
 const IndexController = require('./Controllers/IndexController')
 const indexController = new IndexController
 
-app.get('/', indexController.index)
+app.get('/hello', indexController.index)
 
-app.listen(3000, ()=>{
-    console.log("Server ok");
-});
+app.get('/', (req, res)=>{
+    res.sendFile('index.html', {root : __dirname + '/public'})
+})
+
+app.listen(3000, ()=>{ });
