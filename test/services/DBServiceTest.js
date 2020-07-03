@@ -23,7 +23,7 @@ describe("DBService", () => {
             let result = null
             const data = {login: 'test',
                 password: 'freiufgeuri.4641A',
-                mail: 'test@test.fr'}
+                mail: null}
 
             // Act
             result = dbService.insert(data)
