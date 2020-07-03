@@ -141,26 +141,26 @@ describe("DBService", () => {
         it("Doit retourner false (l'id n'existe pas)", () => {
             // Arrange
             const dbService = new DBService()
-            let result = null
             const id = "10"
 
             // Act
-            result = dbService.delete(id)
+            dbService.delete(id).then(res => {
 
-            //Assert
-            assert.strictEqual(result, false)
+                // Assert
+                assert.strictEqual(res, false)
+            })
         })
         it("Doit retourner true (l'id existe)", () => {
             // Arrange
             const dbService = new DBService()
-            let result = null
             const id = "1"
 
             // Act
-            result = dbService.delete(id)
+            dbService.delete(id).then(res => {
 
-            //Assert
-            assert.strictEqual(result, false)
+                // Assert
+                assert.strictEqual(res, true)
+            })
         })
     })
 })
