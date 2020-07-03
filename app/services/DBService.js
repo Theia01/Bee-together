@@ -14,6 +14,7 @@ module.exports = class DBService {
                 db.connect()
                 db.query(
                     `DELETE FROM ${this._database.table.auth.table_name} WHERE ${this._database.table.auth.columns.id.name}=?`, [id], function (error, results, fields) {
+                    db.end()
                     if(results.affectedRows>0){
                         resolve(true)
                     } else {
@@ -24,7 +25,9 @@ module.exports = class DBService {
     }
 
     select() {
-        return true
+        return new Promise((resolve,reject) => {
+
+        })
     }
 
     insert(data) {
@@ -41,6 +44,7 @@ module.exports = class DBService {
                 data.mail,
                 data.password
                 ], function (error, results, fields) {
+                    db.end()
                     if(error){
                         resolve(false)
                     } else {
