@@ -47,16 +47,17 @@ describe("DBService", () => {
         })
     })
     describe("#select", () => {
-        it("Doit retourner true", () => {
+        it("Doit retourner un dict de valeurs", () => {
             // Arrange
             const dbService = new DBService()
             let result = null
+            const id = 1
 
             // Act
-            result = dbService.select()
+            result = dbService.select(id)
 
             //Assert
-            assert.strictEqual(result, true)
+            assert.equal(result, {login: 'test', password: 'freiufgeuri.4641A', mail: 'test@test.fr'})
         })
     })
     describe("#update", () => {
