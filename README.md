@@ -65,3 +65,8 @@ Créez une base de donnée en vous basant sur les informations de ![config.datab
 node init.js
 ```
 
+---
+
+Certaines fonctionnalités ne sont pas terminées. La mise à jour d'utilisateurs n'a en effet pas pu être finie. Le code commencé est néanmoins présent mais commenté.
+L'interface graphique n'est pas non plus terminée, les boutons ne fonctionnent pas.
+
