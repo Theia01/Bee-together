@@ -1,35 +1,49 @@
 const assert = require('assert')
 const DBService = require('../../app/services/DBService')
+const DatabaseConfig = require("../../config.database")
 
 describe("DBService", () => {
+    beforeEach(()=>{
+        const db = new DatabaseConfig
+        const database = db.initConnection()
+        database.query(`INSERT INTO ${db.table.auth.table_name} 
+            (${db.table.auth.columns.login.name},
+             ${db.table.auth.columns.mail.name},
+             ${db.table.auth.columns.password.name}) VALUES ('test', 'freiufgeuri.4641A', 'test@test.fr')`)
+    })
+    afterEach(()=>{
+        const db = new DatabaseConfig
+        const database = db.initConnection()
+        database.query(`TRUNCATE TABLE ${db.table.auth.table_name}`)
+    })
     describe("#insert", () => {
         it("Doit retourner true si le user s'est enregistré", () => {
             // Arrange
             const dbService = new DBService()
-            let result = null
             const data = {login: 'test',
                 password: 'freiufgeuri.4641A',
                 mail: 'test@test.fr'}
 
             // Act
-            result = dbService.insert(data)
+            dbService.insert(data).then(res => {
 
-            //Assert
-            assert.strictEqual(result, true)
+                // Assert
+                assert.strictEqual(res, true)
+            })
         })
         it("Doit retourner false si le user ne s'est pas enregistré correctement", () => {
             // Arrange
             const dbService = new DBService()
-            let result = null
             const data = {login: 'test',
                 password: 'freiufgeuri.4641A',
                 mail: null}
 
             // Act
-            result = dbService.insert(data)
+            dbService.insert(data).then(res => {
 
-            //Assert
-            assert.strictEqual(result, false)
+                // Assert
+                assert.strictEqual(res, false)
+            })
         })
     })
     describe("#select", () => {
@@ -122,4 +136,31 @@ describe("DBService", () => {
             assert.strictEqual(result, false)
         })
     })
+    describe("#delete", () => {
+        it("Doit retourner false (l'id n'existe pas)", () => {
+            // Arrange
+            const dbService = new DBService()
+            let result = null
+            const id = "10"
+
+            // Act
+            result = dbService.delete(id)
+
+            //Assert
+            assert.strictEqual(result, false)
+        })
+        it("Doit retourner true (l'id existe)", () => {
+            // Arrange
+            const dbService = new DBService()
+            let result = null
+            const id = "1"
+
+            // Act
+            result = dbService.delete(id)
+
+            //Assert
+            assert.strictEqual(result, false)
+        })
+    })
 })
+

@@ -8,6 +8,10 @@ module.exports = class DBService {
 
     }
 
+    delete(id) {
+        return null
+    }
+
     select() {
         return true
     }
