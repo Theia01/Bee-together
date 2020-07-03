@@ -26,7 +26,7 @@ describe("ApiController", () => {
 
             //Assert
             assert.equal(result.result, 'ok')
-            assert.equal(result.data, data)
+            assert.equal(JSON.stringify(result.data), JSON.stringify(data))
 
         })
 
@@ -54,6 +54,16 @@ describe("ApiController", () => {
             //Assert
             assert.equal(result.result, 'ok')
             assert.equal(result.data.length, 2)
+
+        })
+    })
+
+    describe("#store", () => {
+        it("Doit ajouter une nouvelle donnée dans la collection", () => {
+            
+        })
+
+        it("Doit retourner une erreur si pas de donnée donnée dans l'url", () => {
 
         })
     })
