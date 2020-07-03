@@ -56,8 +56,7 @@ Cependant le login et le register ne sont pas fonctionnels
 
 ### Connexion à la base de données
 
-Créez une base de donnée en vous basant sur les informations de ![config.database.js](config.database.js), que vous pouvez modifier si besoin
-Lancez la commande ci-dessous, depuis la racine pour créer les tables
+Créez une base de donnée en vous basant sur les informations de ![config.database.js](config.database.js) que vous pouvez modifier si besoin, lancez la commande ci-dessous, depuis la racine pour créer les tables
 ```sh
 node init.js
 ```
