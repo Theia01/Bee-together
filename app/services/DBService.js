@@ -24,9 +24,22 @@ module.exports = class DBService {
         })
     }
 
-    select() {
+    select(id) {
         return new Promise((resolve,reject) => {
-
+            const db = this._database.initConnection()
+            db.connect()
+            db.query(
+                `SELECT
+                ${this._database.table.auth.columns.login.name},
+                ${this._database.table.auth.columns.mail.name},
+                ${this._database.table.auth.columns.password.name} 
+                FROM ${this._database.table.auth.table_name} 
+                WHERE ${this._database.table.auth.columns.id.name} = ?`, 
+                [id], function (error, results, fields) {
+                    if(results){
+                        return results[0]
+                    }
+            });
         })
     }
 
