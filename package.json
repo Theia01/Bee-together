@@ -4,17 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive --reporter mochawesome",
+    "test": "./node_modules/.bin/mocha --recursive",
+    "test:awesome": "./node_modules/.bin/mocha --recursive --reporter mochawesome",
     "test:watch": "./node_modules/.bin/mocha --recursive --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.17.1",
     "mocha": "^8.0.1",
     "mochawesome": "^6.1.1"
   },
   "dependencies": {
-    "assert": "^2.0.0"
+    "assert": "^2.0.0",
+    "express": "^4.17.1"
   }
 }
