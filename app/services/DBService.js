@@ -14,7 +14,7 @@ module.exports = class DBService {
 
     insert(data) {
         return new Promise((resolve,reject) => {
-            var db = this._database.initConnection()
+            const db = this._database.initConnection()
             db.connect()
             db.query(
                 `INSERT INTO ${this._database.table.auth.table_name} 
@@ -33,5 +33,10 @@ module.exports = class DBService {
                     }
             });
         })
+
+    }
+
+    update(id, data) {
+        return null
     }
 }
