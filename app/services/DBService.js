@@ -9,7 +9,7 @@ module.exports = class DBService {
     }
 
     select() {
-        return null
+        return true
     }
 
     insert(data) {
